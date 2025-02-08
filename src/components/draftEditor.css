@@ -1,0 +1,143 @@
+.editor-container {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+}
+
+.editor-card {
+  position: relative;
+  max-height: calc(100vh - 180px);
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+}
+
+.success-message {
+  position: absolute;
+  top: 10px;
+  right: 22px;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 0 0.75rem 0 0.75rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.editor-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+}
+
+.editor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.paragraph-input {
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.paragraph-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  font-family: "Work Sans";
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-button {
+  background-color: #9800E8;
+  color: white;
+}
+
+.primary-button:hover {
+  background-color: #7805b6;
+}
+
+.secondary-button {
+  background-color: #7ED957;
+  color: black;
+}
+
+.secondary-button:hover {
+  background-color: #68b447;
+}
+
+.preview-card {
+  overflow-y: auto;
+  max-height: 430px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.preview-title {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.paragraph {
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}
+
+@media (max-width: 600px) {
+  .editor-card {
+    padding: 1rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .success-message {
+    position: absolute;
+    width: fit-content;
+    left: 50%;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 0 0.75rem 0 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .preview-card {
+    max-height: 360px;
+  }
+}

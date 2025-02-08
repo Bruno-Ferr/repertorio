@@ -1,0 +1,14 @@
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-left: 12px;
+}
+
+@media (max-width: 600px) {
+  .header img {
+    width: 140px;
+  }
+}
