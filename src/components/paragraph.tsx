@@ -1,7 +1,13 @@
-export default function Paragraph() {
+import './draftEditor.css';
+
+interface ParagraphProps {
+  paragraph: string;
+}
+
+export default function Paragraph({paragraph}: ParagraphProps) {
   return (
-    <div>
-      Paragraph
-    </div>
+    <p className="paragraph">
+      {paragraph}
+    </p>
   )
 }

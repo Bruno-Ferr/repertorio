@@ -1,5 +1,6 @@
 import { useState } from "react"
 import './draftEditor.css';
+import Paragraph from "./paragraph";
 
 export default function DraftEditor() {
   //input de texto/textField
@@ -11,6 +12,7 @@ export default function DraftEditor() {
   const [paragraphs, setParagraphs] = useState<string[]>([]) //string + id
   const [newParagraph, setNewParagraph] = useState('');
   const [savedNotification, setSavedNotification] = useState(false);
+  const [isInputVisible, setIsInputVisible] = useState(false);
   
 
   const handleAddParagraph = () => {
@@ -25,6 +27,11 @@ export default function DraftEditor() {
     setSavedNotification(true);
     setTimeout(() => setSavedNotification(false), 3000);
   };
+
+  const toggleInput = () => {
+    setIsInputVisible(!isInputVisible);
+  };
+
   return (
     <div className="editor-container">
       <div className="editor-card">
@@ -38,23 +45,28 @@ export default function DraftEditor() {
         
         <div className="editor-content">
           {paragraphs.length > 0 && (
-            <div className="preview-card">
+            <div className={`preview-card ${!isInputVisible ? "expanded-preview" : ""}`}>
               <div className="preview-content">
                 {paragraphs.map((paragraph, index) => (
-                  <p key={index} className="paragraph">
-                    {paragraph}
-                  </p>
+                  <Paragraph key={index} paragraph={paragraph} />
                 ))}
               </div>
             </div>
           )}
 
-          <textarea
-            className="paragraph-input"
-            placeholder="Digite seu parágrafo aqui..."
-            value={newParagraph}
-            onChange={(e) => setNewParagraph(e.target.value)}
-          />
+          <div className="toggle-button-container">
+            <button className="button toggle-button" onClick={toggleInput}>
+              {isInputVisible ? "Fechar" : "Abrir"}
+            </button>
+            {isInputVisible && (
+              <textarea
+                className="paragraph-input"
+                placeholder="Digite seu parágrafo aqui..."
+                value={newParagraph}
+                onChange={(e) => setNewParagraph(e.target.value)}
+              />
+            )}
+          </div>
           
           <div className="button-group">
             <button 
