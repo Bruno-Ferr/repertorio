@@ -1,0 +1,45 @@
+.paragraph {
+  position: relative;
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+  padding: .5rem 0 .5rem 0;
+}
+
+.paragraph:hover {
+  background: #dfdfdf;
+}
+
+.paragraph-buttons {
+  position: absolute;
+  right: 10px;
+  bottom: 0%;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.edit-button,
+.delete-button {
+  font-family: "Work Sans";
+  background: white;
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-button {
+  background: #e73d3d;
+  color: white;
+}
+
+.edit-button:hover {
+  background: #e0e0e0;
+}
+
+.delete-button:hover {
+  background: #aa2d2d;
+}
