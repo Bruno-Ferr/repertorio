@@ -18,7 +18,6 @@ export default function Paragraph({paragraph}: ParagraphProps) {
       {isHovered && (
         <div className="paragraph-buttons">
           <button className="edit-button">Editar</button>
-          <button className="delete-button">Excluir</button>
         </div>
       )}
     </div>

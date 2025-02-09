@@ -2,14 +2,13 @@ import { useState } from "react"
 import './draftEditor.css';
 import Paragraph from "./paragraph";
 
+interface ParagraphProps {
+  id: number;
+  text: string;
+}
+
 export default function DraftEditor() {
-  //input de texto/textField
-  //Botão de adicionar parágrafo ao rascunho
-
-  //Botão para salvar o rascunho atual
-
-  //Renderize todos os parágrafos em uma área de visualização de texto
-  const [paragraphs, setParagraphs] = useState<string[]>([]) //string + id
+  const [paragraphs, setParagraphs] = useState<ParagraphProps[]>([])
   const [newParagraph, setNewParagraph] = useState('');
   const [savedNotification, setSavedNotification] = useState(false);
   const [isInputVisible, setIsInputVisible] = useState(false);
@@ -17,19 +16,30 @@ export default function DraftEditor() {
 
   const handleAddParagraph = () => {
     if (newParagraph.trim()) {
-      setParagraphs([...paragraphs, newParagraph.trim()]);
+      setParagraphs([...paragraphs, {id: paragraphs.length, text: newParagraph.trim()}]);
       setNewParagraph('');
     }
   };
 
   const handleSaveDraft = () => {
-    // Simulando salvamento
     setSavedNotification(true);
     setTimeout(() => setSavedNotification(false), 3000);
+    //Executa chamada para a API salvar no banco de dados
   };
 
   const toggleInput = () => {
     setIsInputVisible(!isInputVisible);
+  };
+
+  const [highlights, setHighlights] = useState([]); // Guarda os trechos destacados
+
+  // Função para detectar seleção e salvar a marcação
+  const handleHighlight = () => {
+    const selection = window.getSelection();
+    if (!selection.toString()) return;
+
+    const selectedText = selection.toString();
+    setHighlights((prev) => [...prev, selectedText]); // Adiciona a nova seleção
   };
 
   return (
@@ -47,8 +57,8 @@ export default function DraftEditor() {
           {paragraphs.length > 0 && (
             <div className={`preview-card ${!isInputVisible ? "expanded-preview" : ""}`}>
               <div className="preview-content">
-                {paragraphs.map((paragraph, index) => (
-                  <Paragraph key={index} paragraph={paragraph} />
+                {paragraphs.map((paragraph) => (
+                  <Paragraph key={paragraph.id} paragraph={paragraph.text} />
                 ))}
               </div>
             </div>

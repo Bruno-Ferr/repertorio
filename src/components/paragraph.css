@@ -20,8 +20,7 @@
   gap: 5px;
 }
 
-.edit-button,
-.delete-button {
+.edit-button {
   font-family: "Work Sans";
   background: white;
   border: 1px solid #ccc;
@@ -31,15 +30,6 @@
   border-radius: 4px;
 }
 
-.delete-button {
-  background: #e73d3d;
-  color: white;
-}
-
 .edit-button:hover {
   background: #e0e0e0;
-}
-
-.delete-button:hover {
-  background: #aa2d2d;
 }
