@@ -1,30 +1,31 @@
 import { useState } from "react"
 import './draftEditor.css';
+import Paragraph from "./paragraph";
+
+interface ParagraphProps {
+  id: number;
+  text: string;
+}
 
 export default function DraftEditor() {
-  //input de texto/textField
-  //Botão de adicionar parágrafo ao rascunho
-
-  //Botão para salvar o rascunho atual
-
-  //Renderize todos os parágrafos em uma área de visualização de texto
-  const [paragraphs, setParagraphs] = useState<string[]>([]) //string + id
+  const [paragraphs, setParagraphs] = useState<ParagraphProps[]>([])
   const [newParagraph, setNewParagraph] = useState('');
   const [savedNotification, setSavedNotification] = useState(false);
   
-
+  //Adiciona novo parágrafo a lista
   const handleAddParagraph = () => {
     if (newParagraph.trim()) {
-      setParagraphs([...paragraphs, newParagraph.trim()]);
+      setParagraphs([...paragraphs, {id: paragraphs.length, text: newParagraph.trim()}]);
       setNewParagraph('');
     }
   };
 
   const handleSaveDraft = () => {
-    // Simulando salvamento
     setSavedNotification(true);
     setTimeout(() => setSavedNotification(false), 3000);
+    //Chama API e salva no banco de dados
   };
+
   return (
     <div className="editor-container">
       <div className="editor-card">
@@ -40,10 +41,8 @@ export default function DraftEditor() {
           {paragraphs.length > 0 && (
             <div className="preview-card">
               <div className="preview-content">
-                {paragraphs.map((paragraph, index) => (
-                  <p key={index} className="paragraph">
-                    {paragraph}
-                  </p>
+                {paragraphs.map((paragraph) => (
+                  <Paragraph key={paragraph.id} id={paragraph.id} paragraph={paragraph.text} />
                 ))}
               </div>
             </div>

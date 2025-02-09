@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# Repertório
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto para o teste de desenvolvedor fullstack da empresa repertório.
 
-Currently, two official plugins are available:
+![App Screenshot](./public/image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- Typescript
+- CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Pré-requisitos
 
-- Configure the top-level `parserOptions` property like this:
+Antes de começar, certifique-se de ter instalado em sua máquina:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [Node.js](https://nodejs.org/) (versão 16 ou superior recomendada)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+## Como Rodar o Projeto
+
+1. Clone este repositório:
+   ```sh
+   git clone https://github.com/Bruno-Ferr/repertorio.git
+   ```
+
+2. Acesse a pasta do projeto:
+   ```sh
+   cd repertorio
+   ```
+
+3. Instale as dependências:
+   ```sh
+   npm install
+   # ou
+   yarn install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+   ```sh
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+O projeto estará disponível em `http://localhost:5173/` (caso utilize Vite).
+
+## Estrutura do Projeto
+
+```
+repertorio/
+│-- src/
+│   ├── components/      # Componentes reutilizáveis
+│   ├── pages/           
+│   ├── assets/          # Imagens e arquivos estáticos
+│   ├── App.tsx
+│   ├── main.tsx
+│-- public/
+│-- package.json
+│-- vite.config.js 
+│-- README.md
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Branch com Features Extras
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Além da branch principal, existe uma branch more-features que contém algumas funcionalidades extras como:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- [X] Edição de parágrafos
+- [X] Minimizar/Maximizar input de texto
+- [ ] Marca texto
+
+Para acessá-la, use:
+
+```
+git checkout more-features
 ```

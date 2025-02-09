@@ -1,7 +1,12 @@
-export default function Paragraph() {
+interface ParagraphProps {
+  id: number;
+  paragraph: string;
+}
+
+export default function Paragraph({id, paragraph}: ParagraphProps) {
   return (
-    <div>
-      Paragraph
-    </div>
+    <p key={id} className="paragraph">
+      {paragraph}
+    </p>
   )
 }
