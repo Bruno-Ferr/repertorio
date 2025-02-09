@@ -12,11 +12,20 @@ export default function DraftEditor() {
   const [newParagraph, setNewParagraph] = useState('');
   const [savedNotification, setSavedNotification] = useState(false);
   const [isInputVisible, setIsInputVisible] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
   
 
   const handleAddParagraph = () => {
     if (newParagraph.trim()) {
-      setParagraphs([...paragraphs, {id: paragraphs.length, text: newParagraph.trim()}]);
+      //Se tiver editando algum paragraph
+      if (editingId !== null) {
+        setParagraphs(paragraphs.map(p =>
+          p.id === editingId ? { ...p, text: newParagraph.trim() } : p
+        ));
+        setEditingId(null);
+      } else {
+        setParagraphs([...paragraphs, {id: paragraphs.length, text: newParagraph.trim()}]);
+      }
       setNewParagraph('');
     }
   };
@@ -31,16 +40,12 @@ export default function DraftEditor() {
     setIsInputVisible(!isInputVisible);
   };
 
-  const [highlights, setHighlights] = useState([]); // Guarda os trechos destacados
-
-  // Função para detectar seleção e salvar a marcação
-  const handleHighlight = () => {
-    const selection = window.getSelection();
-    if (!selection.toString()) return;
-
-    const selectedText = selection.toString();
-    setHighlights((prev) => [...prev, selectedText]); // Adiciona a nova seleção
-  };
+  const handleEditParagraph = (id: number, text: string) => {
+    setNewParagraph(text);
+    setEditingId(id); 
+    setIsInputVisible(true);
+  }
+  
 
   return (
     <div className="editor-container">
@@ -58,7 +63,7 @@ export default function DraftEditor() {
             <div className={`preview-card ${!isInputVisible ? "expanded-preview" : ""}`}>
               <div className="preview-content">
                 {paragraphs.map((paragraph) => (
-                  <Paragraph key={paragraph.id} paragraph={paragraph.text} />
+                  <Paragraph key={paragraph.id} paragraph={paragraph.text} id={paragraph.id} editParagraph={handleEditParagraph} />
                 ))}
               </div>
             </div>

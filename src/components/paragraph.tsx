@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './paragraph.css';
 
 interface ParagraphProps {
+  id: number;
   paragraph: string;
+  editParagraph: (id: number, text: string) => void;
 }
 
-export default function Paragraph({paragraph}: ParagraphProps) {
+export default function Paragraph({id, paragraph, editParagraph}: ParagraphProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -17,7 +19,7 @@ export default function Paragraph({paragraph}: ParagraphProps) {
       <p>{paragraph}</p>
       {isHovered && (
         <div className="paragraph-buttons">
-          <button className="edit-button">Editar</button>
+          <button className="edit-button" onClick={() => editParagraph(id, paragraph)}>Editar</button>
         </div>
       )}
     </div>
