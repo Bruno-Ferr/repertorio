@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom";
 
 describe("DraftEditor Component", () => {
-  it("deve renderizar o componente corretamente", () => {
+  it("Should render component correctly", () => {
     render(<DraftEditor />);
     expect(screen.getByText("Redação")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Digite seu parágrafo aqui...")).toBeInTheDocument();
@@ -12,7 +12,7 @@ describe("DraftEditor Component", () => {
     expect(screen.getByText("Salvar Rascunho")).toBeInTheDocument();
   });
 
-  it("deve adicionar um novo parágrafo", () => {
+  it("Should add a new paragraph", () => {
     render(<DraftEditor />);
     
     const input = screen.getByPlaceholderText("Digite seu parágrafo aqui...") as HTMLTextAreaElement;
@@ -22,10 +22,10 @@ describe("DraftEditor Component", () => {
     fireEvent.click(addButton);
 
     expect(screen.getByText("Este é um novo parágrafo.")).toBeInTheDocument();
-    expect(input.value).toBe(""); // Deve resetar o campo de entrada
+    expect(input.value).toBe("");
   });
 
-  it("não deve adicionar parágrafos vazios", () => {
+  it("Should not add empty paragraphs", () => {
     render(<DraftEditor />);
     
     const addButton = screen.getByText("Adicionar Parágrafo");
@@ -34,7 +34,7 @@ describe("DraftEditor Component", () => {
     expect(screen.queryByText("Este é um novo parágrafo.")).not.toBeInTheDocument();
   });
 
-  it("deve exibir a notificação ao salvar o rascunho", async () => {
+  it("Should show 'note saved' notification", async () => {
     render(<DraftEditor />);
     
     const saveButton = screen.getByText("Salvar Rascunho");

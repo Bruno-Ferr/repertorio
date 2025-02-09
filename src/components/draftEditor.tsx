@@ -11,7 +11,7 @@ export default function DraftEditor() {
   const [paragraphs, setParagraphs] = useState<ParagraphProps[]>([])
   const [newParagraph, setNewParagraph] = useState('');
   const [savedNotification, setSavedNotification] = useState(false);
-  const [isInputVisible, setIsInputVisible] = useState(false);
+  const [isInputVisible, setIsInputVisible] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
   
 
@@ -50,7 +50,7 @@ export default function DraftEditor() {
   return (
     <div className="editor-container">
       <div className="editor-card">
-        <h1 className="editor-title">Rascunho</h1>
+        <h1 className="editor-title">Redação</h1>
 
         {savedNotification && (
             <div className="success-message">
