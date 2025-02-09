@@ -23,13 +23,13 @@ export default function DraftEditor() {
   const handleSaveDraft = () => {
     setSavedNotification(true);
     setTimeout(() => setSavedNotification(false), 3000);
-    //Chama API e salva no banco de dados
+    //Chama API para salvar no banco de dados
   };
 
   return (
     <div className="editor-container">
       <div className="editor-card">
-        <h1 className="editor-title">Rascunho</h1>
+        <h1 className="editor-title">Redação</h1>
 
         {savedNotification && (
             <div className="success-message">
