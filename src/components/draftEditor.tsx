@@ -20,6 +20,7 @@ export default function DraftEditor() {
     }
   };
 
+  //Salva o rascunho
   const handleSaveDraft = () => {
     setSavedNotification(true);
     setTimeout(() => setSavedNotification(false), 3000);

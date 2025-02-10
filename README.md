@@ -1,6 +1,7 @@
 # Repertório
 
 Este é um projeto para o teste de desenvolvedor fullstack da empresa repertório.
+Hospedagem: https://repertorio-gamma.vercel.app/
 
 ![App Screenshot](./public/image.png)
 
